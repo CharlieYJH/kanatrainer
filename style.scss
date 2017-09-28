@@ -56,10 +56,21 @@ body, html {
 			margin-bottom: 15px;
 			font-size: 24px;
 		}
+
+		.selector-field {
+			margin: 7px 0;
+		}
+
+		.selector-label {
+			font-size: 18px;
+		}
 		
 		#start-button {
-			margin-top: 40px;
+			display: inline-block;
+			margin-top: 20px;
+			padding: 10px 20px;
 			font-size: 24px;
+			cursor: pointer;
 		}
 	}
 }

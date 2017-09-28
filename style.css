@@ -42,9 +42,16 @@ body, html {
   .start-screen-container .selector-title {
     margin-bottom: 15px;
     font-size: 24px; }
+  .start-screen-container .selector-field {
+    margin: 7px 0; }
+  .start-screen-container .selector-label {
+    font-size: 18px; }
   .start-screen-container #start-button {
-    margin-top: 40px;
-    font-size: 24px; }
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 24px;
+    cursor: pointer; }
 
 .trainer-wrapper {
   position: absolute;
