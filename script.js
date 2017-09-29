@@ -18,6 +18,8 @@
 		};
 
 		// Elements related to the reading trainer
+		var readingTrainingProgress = document.getElementById("reading-training-progress");
+		var readingProgressBar = document.getElementById("reading-progress-bar");
 		var readingKanaDisplay = document.getElementById("reading-kana-display");
 		var readingKanaAnswer = document.getElementById("reading-kana-answer");
 		var readingAnswerInput = document.getElementById("reading-answer-input");
@@ -70,6 +72,11 @@
 		// Stores user answer
 		var currAnswer = "";
 
+		// Variables to keep score
+		var totalChars;
+		var correctChars = 0;
+		var attempted = false;
+
 		// Main looping function
 		function run() {
 
@@ -83,6 +90,7 @@
 					appWrapper.classList.remove("started");
 					readingKanaAnswer.classList.remove("show-wrong");
 					readingKanaDisplay.innerHTML = "";
+					readingProgressBar.style.width = 0;
 					break;
 
 				// Application started, start appropriate trainers depending on user choice
@@ -105,6 +113,10 @@
 					if (selectors.reading.checked) {
 						// If user chose reading training, start reading training
 						currState = states.readingStarted;
+
+						// Initialize score
+						totalChars = currCharSet.length;
+						correctChars = 0;
 					}
 
 					break;
@@ -123,8 +135,16 @@
 
 					// Update current word
 					if (currChar) {
+
+						// Update progress
+						var progress = (totalChars - currCharSet.length + 1) / totalChars;
+						readingProgressBar.style.width = progress * 100 + "%";
+						readingTrainingProgress.innerHTML = (totalChars - currCharSet.length + 1) + " / " + totalChars;
+
+						// Show new character
 						readingKanaDisplay.innerHTML = currChar.character;
 						readingKanaAnswer.classList.remove("show-wrong");
+						attempted = false;
 						currState = states.readingCheck;
 					}
 
@@ -137,6 +157,11 @@
 					if (currAnswer) {
 						if (currChar.romaji.includes(currAnswer)) {
 
+							// If this was the first attempt, add 1 to score
+							if (!attempted) {
+								correctChars++;
+							}
+
 							// Remove current character from the set
 							var index = currCharSet.indexOf(currChar);
 							currCharSet.splice(index, 1);
@@ -148,6 +173,7 @@
 								currState = states.waiting;
 							}
 						} else {
+							attempted = true;
 							readingKanaAnswer.classList.add("show-wrong");
 						}
 
