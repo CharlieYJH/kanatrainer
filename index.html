@@ -28,13 +28,13 @@
             <div id="type-selector" class="selector-container">
               <div class="selector-title">Training Type</div>
               <form>
-                <div class="selector-field writing-selector">
-                  <input id="writing" type="checkbox" value="writing" name="writing" class="selector">
-                  <label for="writing" class="selector-label">Writing</label>
-                </div>
                 <div class="selector-field reading-selector">
                   <input id="reading" type="checkbox" value="reading" name="reading" class="selector">
                   <label for="reading" class="selector-label">Reading</label>
+                </div>
+                <div class="selector-field writing-selector">
+                  <input id="writing" type="checkbox" value="writing" name="writing" class="selector">
+                  <label for="writing" class="selector-label">Writing</label>
                 </div>
               </form>
             </div>
@@ -42,7 +42,13 @@
           </div>
         </div>
         <div class="trainer-wrapper">
-          <div class="trainer-container"></div>
+          <div id="reading-training-container" class="trainer-container">
+            <div class="training-title">Reading Training</div>
+            <div id="reading-kana-display" class="kana-display"></div>
+            <div id="reading-kana-answer" class="kana-answer"></div>
+            <input type="text" name="answer" id="reading-answer-input">
+            <input type="submit" value="Submit" name="submit" id="reading-answer-submit">
+          </div>
         </div>
       </div>
     </div>

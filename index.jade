@@ -26,16 +26,21 @@ html
 						div.selector-container#type-selector
 							div.selector-title Training Type
 							form
-								div.selector-field.writing-selector
-									input.selector#writing(type="checkbox" value="writing" name="writing")
-									label.selector-label(for="writing") Writing
 								div.selector-field.reading-selector
 									input.selector#reading(type="checkbox" value="reading" name="reading")
 									label.selector-label(for="reading") Reading
+								div.selector-field.writing-selector
+									input.selector#writing(type="checkbox" value="writing" name="writing")
+									label.selector-label(for="writing") Writing
 
 						div#start-button Start
 
 				div.trainer-wrapper
-					div.trainer-container
+					div.trainer-container#reading-training-container
+						div.training-title Reading Training
+						div.kana-display#reading-kana-display
+						div.kana-answer#reading-kana-answer
+						input(type="text" name="answer")#reading-answer-input
+						input(type="submit" value="Submit" name="submit")#reading-answer-submit
 
 		script(src="./script.js")
