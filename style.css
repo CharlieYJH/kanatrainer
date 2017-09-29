@@ -79,5 +79,9 @@ body, html {
     font-size: 28px; }
   .trainer-container .kana-display {
     font-size: 160px; }
+  .trainer-container .kana-answer {
+    opacity: 0; }
+    .trainer-container .kana-answer.show-wrong {
+      opacity: 1; }
 
 /*# sourceMappingURL=style.css.map */

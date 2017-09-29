@@ -81,6 +81,8 @@
 
 					// Show start screen
 					appWrapper.classList.remove("started");
+					readingKanaAnswer.classList.remove("show-wrong");
+					readingKanaDisplay.innerHTML = "";
 					break;
 
 				// Application started, start appropriate trainers depending on user choice
@@ -89,15 +91,16 @@
 					// Show application screen
 					appWrapper.classList.add("started");
 
+					currCharSet = [];
+
 					// Select the appropriate character set depending on user setting
 					if (selectors.hiragana.checked && selectors.katakana.checked) {
 						currCharSet = hiragana.concat(katakana);
 					} else if (selectors.hiragana.checked) {
-						currCharSet = hiragana;
+						currCharSet.push.apply(currCharSet, hiragana);
 					} else {
-						currCharSet = katakana;
+						currCharSet.push.apply(currCharSet, katakana);
 					}
-					console.log(currCharSet);
 
 					if (selectors.reading.checked) {
 						// If user chose reading training, start reading training
@@ -121,7 +124,7 @@
 					// Update current word
 					if (currChar) {
 						readingKanaDisplay.innerHTML = currChar.character;
-						readingKanaAnswer.innerHTML = "Answer: " + currChar.romaji;
+						readingKanaAnswer.classList.remove("show-wrong");
 						currState = states.readingCheck;
 					}
 
@@ -145,7 +148,7 @@
 								currState = states.waiting;
 							}
 						} else {
-							console.log("Incorrect.");
+							readingKanaAnswer.classList.add("show-wrong");
 						}
 
 						// Reset current answer and input box

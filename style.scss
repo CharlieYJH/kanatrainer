@@ -108,5 +108,13 @@ body, html {
 		.kana-display {
 			font-size: 160px;
 		}
+
+		.kana-answer {
+			opacity: 0;
+
+			&.show-wrong {
+				opacity: 1;
+			}
+		}
 	}
 }
