@@ -78,4 +78,8 @@ body, html {
   .reading-training-container .kana-answer.show-wrong {
     opacity: 1; }
 
+.reading-result-container .wrong-answers-container > div {
+  display: inline-block;
+  margin: 0 5px; }
+
 /*# sourceMappingURL=style.css.map */

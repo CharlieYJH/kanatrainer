@@ -32,6 +32,7 @@
 
 		// Elements related to the result screen
 		var resultScore = document.getElementById("result-score");
+		var wrongAnswersContainer = document.getElementById("wrong-answers-container");
 
 		// Defining the character set
 		var characters = [
@@ -89,6 +90,9 @@
 		var correctChars = 0;
 		var attempted = false;
 
+		// Keeps track of user actions
+		var goToMenu = false;
+
 		// Main looping function
 		function run() {
 
@@ -103,6 +107,17 @@
 					readingKanaAnswer.classList.remove("show-wrong");
 					readingKanaDisplay.innerHTML = "";
 					readingProgressBar.style.width = 0;
+
+					var child = wrongAnswersContainer.firstChild;
+
+					// Remove all the wrong answers displayed
+					while(child) {
+						wrongAnswersContainer.removeChild(child);
+					}
+
+					// Reset goToMenu
+					goToMenu = false;
+
 					break;
 
 				// Application started, start appropriate trainers depending on user choice
@@ -212,13 +227,38 @@
 				// Show training results
 				case states.readingResult:
 
-					console.log(wrongChars);
-
 					// Show result screen
 					readingResult.classList.add("show");
 
 					// Result from training
 					resultScore.innerHTML = correctChars + " / " + totalChars;
+
+					// If user had wrong answers, show all the questions answered wrong
+					for (var i = 0; i < wrongChars.length; i++) {
+						var container = document.createElement("div");
+
+						var questionDiv = document.createElement("div");
+						var question = document.createTextNode(wrongChars[i].character);
+						questionDiv.appendChild(question);
+
+						var answerDiv = document.createElement("div");
+						var answer = document.createTextNode(wrongChars[i].romaji[0]);
+						answerDiv.appendChild(answer);
+
+						container.appendChild(questionDiv);
+						container.appendChild(answerDiv);
+
+						wrongAnswersContainer.appendChild(container);
+					}
+
+					// Reset wrong characters
+					wrongChars = [];
+
+					// Go to menu
+					if (goToMenu) {
+						readingResult.classList.remove("show");
+						currState = states.waiting;
+					}
 
 					break;
 
@@ -273,8 +313,7 @@
 			});
 
 			document.getElementById("menu-button").addEventListener("click", function() {
-				readingResult.classList.remove("show");
-				currState = states.waiting;
+				goToMenu = true;
 			});
 		};
 
