@@ -127,6 +127,9 @@
 					// Show reading training screen
 					appWrapper.classList.add("reading-training");
 
+					// Focus cursor on input
+					readingAnswerInput.focus();
+
 					// Clear previous input value
 					readingAnswerInput.value = "";
 

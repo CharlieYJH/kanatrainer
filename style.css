@@ -8,94 +8,84 @@ body, html {
   min-height: 100%; }
 
 .app-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: relative;
   width: 80%;
-  height: 90%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%); }
+  margin: 0 auto;
+  padding-top: 15vh; }
+
+.screen-wrapper {
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center; }
+
+.screen-container {
+  width: 100%; }
 
 .start-screen-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center; }
-.start-screen-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%); }
-  .start-screen-container .title {
-    margin-bottom: 50px;
-    font-size: 36px; }
-  .start-screen-container .selector-container {
-    margin: 30px 0; }
-  .start-screen-container .selector-title {
-    margin-bottom: 15px;
-    font-size: 24px; }
-  .start-screen-container .selector-field {
-    margin: 7px 0; }
-  .start-screen-container .selector-label {
-    font-size: 18px; }
-  .start-screen-container #start-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 24px;
-    cursor: pointer; }
+  opacity: 1;
+  -webkit-transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear; }
+  .app-wrapper.started .start-screen-wrapper {
+    opacity: 0;
+    visibility: hidden; }
+.start-screen-container .title {
+  margin-bottom: 50px;
+  font-size: 36px; }
+.start-screen-container .selector-container {
+  margin: 30px 0; }
+.start-screen-container .selector-title {
+  margin-bottom: 15px;
+  font-size: 24px; }
+.start-screen-container .selector-field {
+  margin: 7px 0; }
+.start-screen-container .selector-label {
+  font-size: 18px; }
+.start-screen-container #start-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 24px;
+  cursor: pointer; }
 
-.trainer-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  background: white;
+.reading-training-wrapper {
   opacity: 0;
-  z-index: -999; }
-  .app-wrapper.started .trainer-wrapper {
+  background: white;
+  z-index: -999;
+  -webkit-transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+  visibility: hidden; }
+  .app-wrapper.started.reading-training .reading-training-wrapper {
     opacity: 1;
+    visibility: visible;
     z-index: 999; }
-.trainer-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%); }
-  .trainer-container .training-title {
-    font-size: 28px; }
-  .trainer-container .training-progress-container {
-    width: 40%;
-    margin: 0 auto; }
-    @media only screen and (max-width: 480px) {
-      .trainer-container .training-progress-container {
-        width: 100%; } }
-  .trainer-container .training-progress-bar {
-    width: 0%;
-    height: 5px;
-    background: black;
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    -o-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out; }
-  .trainer-container .kana-display {
-    font-size: 160px; }
-  .trainer-container .kana-answer {
-    opacity: 0; }
-    .trainer-container .kana-answer.show-wrong {
-      opacity: 1; }
+.reading-training-container .training-title {
+  font-size: 28px; }
+.reading-training-container .training-progress-container {
+  width: 40%;
+  margin: 0 auto; }
+  @media only screen and (max-width: 480px) {
+    .reading-training-container .training-progress-container {
+      width: 100%; } }
+.reading-training-container .training-progress-bar {
+  width: 0%;
+  height: 5px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  background: black;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out; }
+.reading-training-container .kana-display {
+  font-size: 160px; }
+.reading-training-container .kana-answer {
+  opacity: 0; }
+  .reading-training-container .kana-answer.show-wrong {
+    opacity: 1; }
 
 /*# sourceMappingURL=style.css.map */
