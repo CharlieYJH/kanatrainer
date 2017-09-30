@@ -17,20 +17,20 @@ body, html {
   position: absolute;
   width: 100%;
   margin: 0 auto;
-  text-align: center; }
-
-.screen-container {
-  width: 100%; }
-
-.start-screen-wrapper {
-  opacity: 1;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
   -webkit-transition: opacity 0.2s linear;
   -moz-transition: opacity 0.2s linear;
   -o-transition: opacity 0.2s linear;
   transition: opacity 0.2s linear; }
-  .app-wrapper.started .start-screen-wrapper {
-    opacity: 0;
-    visibility: hidden; }
+  .screen-wrapper.show {
+    opacity: 1;
+    visibility: visible; }
+
+.screen-container {
+  width: 100%; }
+
 .start-screen-container .title {
   margin-bottom: 50px;
   font-size: 36px; }
@@ -51,18 +51,7 @@ body, html {
   cursor: pointer; }
 
 .reading-training-wrapper {
-  opacity: 0;
-  background: white;
-  z-index: -999;
-  -webkit-transition: opacity 0.2s linear;
-  -moz-transition: opacity 0.2s linear;
-  -o-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear;
-  visibility: hidden; }
-  .app-wrapper.started.reading-training .reading-training-wrapper {
-    opacity: 1;
-    visibility: visible;
-    z-index: 999; }
+  background: white; }
 .reading-training-container .training-title {
   font-size: 28px; }
 .reading-training-container .training-progress-container {

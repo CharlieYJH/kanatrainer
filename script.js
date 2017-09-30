@@ -17,6 +17,10 @@
 			reading: document.getElementById("reading")
 		};
 
+		// Different application screens
+		var startScreen = document.getElementById("start-screen");
+		var readingTraining = document.getElementById("reading-training");
+
 		// Elements related to the reading trainer
 		var readingTrainingProgress = document.getElementById("reading-training-progress");
 		var readingProgressBar = document.getElementById("reading-progress-bar");
@@ -87,7 +91,7 @@
 				case states.waiting:
 
 					// Show start screen
-					appWrapper.classList.remove("started");
+					startScreen.classList.add("show");
 					readingKanaAnswer.classList.remove("show-wrong");
 					readingKanaDisplay.innerHTML = "";
 					readingProgressBar.style.width = 0;
@@ -97,8 +101,9 @@
 				case states.started:
 
 					// Show application screen
-					appWrapper.classList.add("started");
+					startScreen.classList.remove("show");
 
+					// Reset current character set
 					currCharSet = [];
 
 					// Select the appropriate character set depending on user setting
@@ -111,6 +116,7 @@
 					}
 
 					if (selectors.reading.checked) {
+
 						// If user chose reading training, start reading training
 						currState = states.readingStarted;
 
@@ -125,7 +131,7 @@
 				case states.readingStarted:
 
 					// Show reading training screen
-					appWrapper.classList.add("reading-training");
+					readingTraining.classList.add("show");
 
 					// Focus cursor on input
 					readingAnswerInput.focus();
@@ -173,6 +179,7 @@
 								// Go to next character if the character set is not empty
 								currState = states.readingStarted;
 							} else {
+								readingTraining.classList.remove("show");
 								currState = states.waiting;
 							}
 						} else {

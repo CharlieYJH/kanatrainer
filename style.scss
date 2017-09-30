@@ -30,30 +30,28 @@ body, html {
 	padding-top: 15vh;
 }
 
+$screenTransitionTime: 0.2s;
+
 .screen-wrapper {
 	position: absolute;
 	width: 100%;
 	margin: 0 auto;
 	text-align: center;
+	visibility: hidden;
+	opacity: 0;
+	@include transition(opacity $screenTransitionTime linear);
+
+	&.show {
+		opacity: 1;
+		visibility: visible;
+	}
 }
 
 .screen-container {
 	width: 100%;
 }
 
-$screenTransitionTime: 0.2s;
-
 .start-screen {
-
-	&-wrapper {
-		opacity: 1;
-		@include transition(opacity $screenTransitionTime linear);
-
-		.app-wrapper.started & {
-			opacity: 0;
-			visibility: hidden;
-		}
-	}
 
 	&-container {
 
@@ -92,17 +90,7 @@ $screenTransitionTime: 0.2s;
 .reading-training {
 
 	&-wrapper {
-		opacity: 0;
 		background: white;
-		z-index: -999;
-		@include transition(opacity $screenTransitionTime linear);
-		visibility: hidden;
-
-		.app-wrapper.started.reading-training & {
-			opacity: 1;
-			visibility: visible;
-			z-index: 999;
-		}
 	}
 
 	&-container {
