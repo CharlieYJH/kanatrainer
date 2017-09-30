@@ -51,6 +51,10 @@ $screenTransitionTime: 0.2s;
 	width: 100%;
 }
 
+.screen-title {
+	font-size: 28px;
+}
+
 .start-screen {
 
 	&-container {
@@ -94,10 +98,6 @@ $screenTransitionTime: 0.2s;
 	}
 
 	&-container {
-
-		.training-title {
-			font-size: 28px;
-		}
 
 		.training-progress-container {
 			width: 40%;

@@ -20,6 +20,7 @@
 		// Different application screens
 		var startScreen = document.getElementById("start-screen");
 		var readingTraining = document.getElementById("reading-training");
+		var readingResult = document.getElementById("reading-result");
 
 		// Elements related to the reading trainer
 		var readingTrainingProgress = document.getElementById("reading-training-progress");
@@ -28,6 +29,9 @@
 		var readingKanaAnswer = document.getElementById("reading-kana-answer");
 		var readingAnswerInput = document.getElementById("reading-answer-input");
 		var readingSubmitButton = document.getElementById("reading-answer-submit");
+
+		// Elements related to the result screen
+		var resultScore = document.getElementById("result-score");
 
 		// Defining the character set
 		var characters = [
@@ -59,12 +63,16 @@
 		// Current character set chosen depending on user setting
 		var currCharSet = [];
 
+		// Characters which the user answered wrong
+		var wrongChars = [];
+
 		// Trainer states
 		var states = {
 			waiting: 0,
 			started: 1,
 			readingStarted: 2,
-			readingCheck: 3
+			readingCheck: 3,
+			readingResult: 4
 		};
 
 		// Stores current application state
@@ -103,8 +111,9 @@
 					// Show application screen
 					startScreen.classList.remove("show");
 
-					// Reset current character set
+					// Reset current character set and wrong characters
 					currCharSet = [];
+					wrongChars = [];
 
 					// Select the appropriate character set depending on user setting
 					if (selectors.hiragana.checked && selectors.katakana.checked) {
@@ -180,16 +189,36 @@
 								currState = states.readingStarted;
 							} else {
 								readingTraining.classList.remove("show");
-								currState = states.waiting;
+								currState = states.readingResult;
 							}
 						} else {
+
+							// Mark question as attempted and show text saying wrong answer
 							attempted = true;
 							readingKanaAnswer.classList.add("show-wrong");
+
+							// Store the character that the user got wrong
+							if (wrongChars.length <= 0 || wrongChars[wrongChars.length - 1] !== currChar) {
+								wrongChars.push(currChar);
+							}
 						}
 
 						// Reset current answer and input box
 						currAnswer = "";
 					}
+
+					break;
+				
+				// Show training results
+				case states.readingResult:
+
+					console.log(wrongChars);
+
+					// Show result screen
+					readingResult.classList.add("show");
+
+					// Result from training
+					resultScore.innerHTML = correctChars + " / " + totalChars;
 
 					break;
 
@@ -241,6 +270,11 @@
 					// If the user pressed enter while focused on the input, take it as a submission
 					currAnswer = readingAnswerInput.value;
 				}
+			});
+
+			document.getElementById("menu-button").addEventListener("click", function() {
+				readingResult.classList.remove("show");
+				currState = states.waiting;
 			});
 		};
 

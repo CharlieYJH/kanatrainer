@@ -31,6 +31,9 @@ body, html {
 .screen-container {
   width: 100%; }
 
+.screen-title {
+  font-size: 28px; }
+
 .start-screen-container .title {
   margin-bottom: 50px;
   font-size: 36px; }
@@ -52,8 +55,6 @@ body, html {
 
 .reading-training-wrapper {
   background: white; }
-.reading-training-container .training-title {
-  font-size: 28px; }
 .reading-training-container .training-progress-container {
   width: 40%;
   margin: 0 auto; }

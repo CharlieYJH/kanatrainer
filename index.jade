@@ -38,7 +38,7 @@ html
 
 				div.reading-training-wrapper.screen-wrapper#reading-training
 					div.reading-training-container.screen-container
-						div.training-title Reading Training
+						div.training-title.screen-title Reading Training
 						div.training-progress-container
 							div.training-progress-bar#reading-progress-bar
 							div.training-progress#reading-training-progress
@@ -46,5 +46,12 @@ html
 						div.kana-answer#reading-kana-answer Incorrect
 						input(type="text" name="answer")#reading-answer-input
 						input(type="submit" value="Submit" name="submit")#reading-answer-submit
+
+				div.reading-result-wrapper.screen-wrapper#reading-result
+					div.reading-result-container.screen-container
+						div.screen-title Reading Training: Result
+						div.result-text Your score was:
+						div.result-score#result-score
+						button#menu-button Menu
 
 		script(src="./script.js")
