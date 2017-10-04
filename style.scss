@@ -77,6 +77,7 @@ $highlightColor: #0059c8;
 
 .menu-button {
 	padding: 5px 10px;
+	margin-bottom: 1em;
 	font-size: 18px;
 	color: $highlightColor;
 	cursor: pointer;
@@ -296,7 +297,7 @@ $highlightColor: #0059c8;
 		}
 
 		.result-percentage {
-			font-size: 160px;
+			font-size: 100px;
 			color: $highlightColor;
 		}
 
