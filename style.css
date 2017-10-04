@@ -85,7 +85,7 @@ button, input {
   position: relative;
   width: 40%;
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 2em;
   background: transparent; }
   @media only screen and (max-width: 480px) {
     .reading-training-container .training-progress-container {
@@ -116,8 +116,8 @@ button, input {
   color: #323232;
   color: #0059c8; }
 .reading-training-container .skip-button-container {
-  margin-top: 10px;
-  margin-bottom: 20px; }
+  margin-top: 0.5em;
+  margin-bottom: 0.7em; }
 .reading-training-container .skip-button {
   padding: 10px 10px;
   background: transparent;
@@ -130,7 +130,7 @@ button, input {
   color: #323232; }
 .reading-training-container .kana-answer {
   opacity: 0;
-  margin-bottom: 5px;
+  margin-bottom: 0.2em;
   color: #de2626;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -149,7 +149,7 @@ button, input {
   border-radius: 0;
   border-bottom: 2px #0059c8 solid; }
 .reading-training-container .submit-button-container {
-  margin-top: 20px; }
+  margin-top: 1.5em; }
 .reading-training-container .submit-button {
   background: transparent;
   font-size: 20px;
@@ -167,7 +167,7 @@ button, input {
     background: #0059c8;
     color: white; }
 .reading-training-container .menu-button-container {
-  margin-top: 10px; }
+  margin-top: 0.6em; }
 .reading-training-container .menu-button {
   padding: 5px 10px;
   font-size: 18px;

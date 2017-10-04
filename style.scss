@@ -134,7 +134,7 @@ $highlightColor: #0059c8;
 			position: relative;
 			width: 40%;
 			margin: 0 auto;
-			margin-top: 30px;
+			margin-top: 2em;
 			background: transparent;
 
 			@media only screen and (max-width: 480px) {
@@ -171,8 +171,8 @@ $highlightColor: #0059c8;
 		}
 
 		.skip-button-container {
-			margin-top: 10px;
-			margin-bottom: 20px;
+			margin-top: 0.5em;
+			margin-bottom: 0.7em;
 		}
 
 		.skip-button {
@@ -191,7 +191,7 @@ $highlightColor: #0059c8;
 
 		.kana-answer {
 			opacity: 0;
-			margin-bottom: 5px;
+			margin-bottom: 0.2em;
 			color: #de2626;
 			@include transition(all 0.2s ease-out);
 
@@ -215,7 +215,7 @@ $highlightColor: #0059c8;
 		}
 
 		.submit-button-container {
-			margin-top: 20px;
+			margin-top: 1.5em;
 		}
 
 		.submit-button {
@@ -236,7 +236,7 @@ $highlightColor: #0059c8;
 		}
 
 		.menu-button-container {
-			margin-top: 10px;
+			margin-top: 0.6em;
 		}
 
 		.menu-button {
