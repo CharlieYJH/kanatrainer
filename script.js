@@ -16,6 +16,7 @@
 			writing: document.getElementById("writing"),
 			reading: document.getElementById("reading")
 		};
+		var menuButtons = document.getElementsByClassName("menu-button");
 
 		// Different application screens
 		var startScreen = document.getElementById("start-screen");
@@ -29,9 +30,11 @@
 		var readingKanaAnswer = document.getElementById("reading-kana-answer");
 		var readingAnswerInput = document.getElementById("reading-answer-input");
 		var readingSubmitButton = document.getElementById("reading-answer-submit");
+		var readingSkipButton = document.getElementById("reading-skip");
 
 		// Elements related to the result screen
 		var resultScore = document.getElementById("result-score");
+		var resultPercentage = document.getElementById("result-percentage");
 		var wrongAnswersContainer = document.getElementById("wrong-answers-container");
 
 		// Defining the character set
@@ -73,7 +76,8 @@
 			started: 1,
 			readingStarted: 2,
 			readingCheck: 3,
-			readingResult: 4
+			readingResult: 4,
+			readingResultWait: 5
 		};
 
 		// Stores current application state
@@ -92,6 +96,7 @@
 
 		// Keeps track of user actions
 		var goToMenu = false;
+		var skipQuestion = false;
 
 		// Main looping function
 		function run() {
@@ -115,8 +120,9 @@
 						wrongAnswersContainer.removeChild(child);
 					}
 
-					// Reset goToMenu
+					// Reset user actions
 					goToMenu = false;
+					skipQuestion = false;
 
 					break;
 
@@ -178,6 +184,7 @@
 						readingKanaDisplay.innerHTML = currChar.character;
 						readingKanaAnswer.classList.remove("show-wrong");
 						attempted = false;
+						skipQuestion = false;
 						currState = states.readingCheck;
 					}
 
@@ -222,6 +229,31 @@
 						currAnswer = "";
 					}
 
+					// Go back to main menu
+					if (goToMenu) {
+						readingTraining.classList.remove("show");
+						currState = states.waiting;
+					}
+
+					// Skip the current question
+					if (skipQuestion) {
+
+						// Remove current character from the set
+						var index = currCharSet.indexOf(currChar);
+						currCharSet.splice(index, 1);
+
+						if (currCharSet.length > 0) {
+							// Go to next character if the character set is not empty
+							currState = states.readingStarted;
+						} else {
+							readingTraining.classList.remove("show");
+							currState = states.readingResult;
+						}
+
+						// Mark the current character as wrong
+						wrongChars.push(currChar);
+					}
+
 					break;
 				
 				// Show training results
@@ -231,18 +263,23 @@
 					readingResult.classList.add("show");
 
 					// Result from training
+					resultPercentage.innerHTML = correctChars / totalChars * 100 + "%";
 					resultScore.innerHTML = correctChars + " / " + totalChars;
 
 					// If user had wrong answers, show all the questions answered wrong
 					for (var i = 0; i < wrongChars.length; i++) {
 						var container = document.createElement("div");
 
+						// Show the character
 						var questionDiv = document.createElement("div");
 						var question = document.createTextNode(wrongChars[i].character);
+						questionDiv.classList.add("correct-character")
 						questionDiv.appendChild(question);
 
+						// Show the correct reading
 						var answerDiv = document.createElement("div");
 						var answer = document.createTextNode(wrongChars[i].romaji[0]);
+						answerDiv.classList.add("correct-reading");
 						answerDiv.appendChild(answer);
 
 						container.appendChild(questionDiv);
@@ -253,6 +290,13 @@
 
 					// Reset wrong characters
 					wrongChars = [];
+
+					currState = states.readingResultWait;
+
+					break;
+
+				// Wait for user action on result screen
+				case states.readingResultWait:
 
 					// Go to menu
 					if (goToMenu) {
@@ -312,8 +356,15 @@
 				}
 			});
 
-			document.getElementById("menu-button").addEventListener("click", function() {
-				goToMenu = true;
+			// Attach event listeners for returning to main menu
+			for (var i = 0; i < menuButtons.length; i++) {
+				menuButtons[i].addEventListener("click", function() {
+					goToMenu = true;
+				});
+			}
+
+			readingSkipButton.addEventListener("click", function() {
+				skipQuestion = true;
 			});
 		};
 

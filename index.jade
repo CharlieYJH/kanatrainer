@@ -31,8 +31,8 @@ html
 									input.selector#reading(type="checkbox" value="reading" name="reading")
 									label.selector-label(for="reading") Reading
 								div.selector-field.writing-selector
-									input.selector#writing(type="checkbox" value="writing" name="writing")
-									label.selector-label(for="writing") Writing
+									input.selector#writing(type="checkbox" value="writing" name="writing" disabled)
+									label.selector-label(for="writing") Writing (Coming soon)
 
 						div#start-button Start
 
@@ -46,13 +46,16 @@ html
 						div.kana-answer#reading-kana-answer Incorrect
 						input(type="text" name="answer")#reading-answer-input
 						input(type="submit" value="Submit" name="submit")#reading-answer-submit
+						button.skip-button#reading-skip Skip
+						button.menu-button Menu
 
 				div.reading-result-wrapper.screen-wrapper#reading-result
 					div.reading-result-container.screen-container
 						div.screen-title Reading Training: Result
 						div.result-text Your score was:
+						div.result-percentage#result-percentage
 						div.result-score#result-score
 						div.wrong-answers-container#wrong-answers-container
-						button#menu-button Menu
+						button.menu-button Menu
 
 		script(src="./script.js")

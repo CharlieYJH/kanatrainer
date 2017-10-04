@@ -33,8 +33,8 @@
                   <label for="reading" class="selector-label">Reading</label>
                 </div>
                 <div class="selector-field writing-selector">
-                  <input id="writing" type="checkbox" value="writing" name="writing" class="selector">
-                  <label for="writing" class="selector-label">Writing</label>
+                  <input id="writing" type="checkbox" value="writing" name="writing" disabled class="selector">
+                  <label for="writing" class="selector-label">Writing (Coming soon)</label>
                 </div>
               </form>
             </div>
@@ -52,15 +52,18 @@
             <div id="reading-kana-answer" class="kana-answer">Incorrect</div>
             <input type="text" name="answer" id="reading-answer-input">
             <input type="submit" value="Submit" name="submit" id="reading-answer-submit">
+            <button id="reading-skip" class="skip-button">Skip</button>
+            <button class="menu-button">Menu</button>
           </div>
         </div>
         <div id="reading-result" class="reading-result-wrapper screen-wrapper">
           <div class="reading-result-container screen-container">
             <div class="screen-title">Reading Training: Result</div>
             <div class="result-text">Your score was:</div>
+            <div id="result-percentage" class="result-percentage"></div>
             <div id="result-score" class="result-score"></div>
             <div id="wrong-answers-container" class="wrong-answers-container"></div>
-            <button id="menu-button">Menu</button>
+            <button class="menu-button">Menu</button>
           </div>
         </div>
       </div>
