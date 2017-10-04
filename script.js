@@ -62,7 +62,7 @@
 		// Hiragana character set
 		var hiragana = [
 			{romaji: ["a"], character: "あ"},
-			{romaji: ["i"], character: "い"},
+			{romaji: ["i", "yi"], character: "い"},
 			{romaji: ["u"], character: "う"},
 			{romaji: ["e"], character: "え"},
 			{romaji: ["o"], character: "お"},
@@ -173,7 +173,7 @@
 		// Katakana character set
 		var katakana = [
 			{romaji: ["a"], character: "ア"},
-			{romaji: ["i"], character: "イ"},
+			{romaji: ["i", "yi"], character: "イ"},
 			{romaji: ["u"], character: "ウ"},
 			{romaji: ["e"], character: "エ"},
 			{romaji: ["o"], character: "オ"},
@@ -480,6 +480,8 @@
 							if (wrongChars.length <= 0 || wrongChars[wrongChars.length - 1] !== currChar) {
 								wrongChars.push(currChar);
 							}
+
+							console.log(wrongChars);
 						}
 
 						// Reset current answer and input box
@@ -507,8 +509,10 @@
 							currState = states.readingResult;
 						}
 
-						// Mark the current character as wrong
-						wrongChars.push(currChar);
+						// Store the character that the user got wrong
+						if (wrongChars.length <= 0 || wrongChars[wrongChars.length - 1] !== currChar) {
+							wrongChars.push(currChar);
+						}
 					}
 
 					break;
