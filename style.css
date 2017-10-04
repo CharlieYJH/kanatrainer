@@ -165,10 +165,24 @@ button, input {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out; }
+  transition: all 0.2s ease-out;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  	                             /* Non-prefixed version, currently
+									supported by Chrome and Opera */ }
   body.hover-enable .reading-training-container .skip-button:hover {
     color: rgba(100, 100, 100, 0.6); }
 .reading-training-container .kana-display {
+  font-family: 'MS PGothic', Osaka, Arial, sans-serif;
   font-size: 160px;
   color: #323232; }
 .reading-training-container .kana-answer {
@@ -237,6 +251,7 @@ button, input {
   margin-bottom: 0.5em;
   border: 1px #c8c8c8 solid; }
 .reading-result-container .correct-character {
+  font-family: 'MS PGothic', Osaka, Arial, sans-serif;
   font-size: 24px;
   padding-bottom: 2px;
   border-bottom: 1px #c8c8c8 solid; }

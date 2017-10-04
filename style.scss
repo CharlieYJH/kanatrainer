@@ -14,6 +14,16 @@
 	    	transition: $transition;
 }
 
+@mixin user-select($user-select) {
+	-webkit-touch-callout: $user-select; /* iOS Safari */
+	  -webkit-user-select: $user-select; /* Safari */
+	   -khtml-user-select: $user-select; /* Konqueror HTML */
+		 -moz-user-select: $user-select; /* Firefox */
+		  -ms-user-select: $user-select; /* Internet Explorer/Edge */
+		  	  user-select: $user-select; /* Non-prefixed version, currently
+											supported by Chrome and Opera */
+}
+
 body, html {
 	height: 100%;
 	margin: 0;
@@ -224,6 +234,7 @@ $highlightColor: #0059c8;
 			border: none;
 			cursor: pointer;
 			@include transition(all 0.2s ease-out);
+			@include user-select(none);
 
 			body.hover-enable &:hover {
 				color: rgba(100, 100, 100, 0.6);
@@ -231,6 +242,7 @@ $highlightColor: #0059c8;
 		}
 
 		.kana-display {
+			font-family: 'MS PGothic', Osaka, Arial, sans-serif;
 			font-size: 160px;
 			color: rgb(50, 50, 50);
 		}
@@ -332,6 +344,7 @@ $highlightColor: #0059c8;
 		}
 
 		.correct-character {
+			font-family: 'MS PGothic', Osaka, Arial, sans-serif;
 			font-size: 24px;
 			padding-bottom: 2px;
 			border-bottom: 1px rgb(200, 200, 200) solid;
