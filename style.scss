@@ -38,9 +38,14 @@ button, input {
 	width: 80%;
 	margin: 0 auto;
 	padding-top: 10vh;
+
+	@media only screen and (max-height: 640px) {
+		padding-top: 5vh;
+	}
 }
 
 $screenTransitionTime: 0.2s;
+$highlightColor: #0059c8;
 
 .screen-wrapper {
 	position: absolute;
@@ -63,16 +68,31 @@ $screenTransitionTime: 0.2s;
 
 .screen-title {
 	font-size: 36px;
+	color: rgb(90, 90, 90);
 }
 
-$highlightColor: #0059c8;
+.menu-button-container {
+	margin-top: 0.6em;
+}
+
+.menu-button {
+	padding: 5px 10px;
+	font-size: 18px;
+	color: $highlightColor;
+	cursor: pointer;
+	@include transition(all 0.2s ease-out);
+
+	body.hover-enable &:hover {
+		color: rgba($highlightColor, 0.6)
+	}
+}
 
 .start-screen {
 
 	&-container {
 
 		.title {
-			margin-bottom: 50px;
+			margin-bottom: 0.7em;
 			font-size: 48px;
 			font-weight: 200;
 			color: rgb(90, 90, 90);
@@ -93,10 +113,35 @@ $highlightColor: #0059c8;
 
 		.selector-field {
 			margin: 7px 0;
+
+			.selector {
+				opacity: 0;
+				position: absolute;
+
+				&:checked + .selector-label {
+					border: 2px $highlightColor solid;
+					color: $highlightColor;
+				}
+			}
+		}
+
+		.selector-field * {
+			cursor: pointer;
 		}
 
 		.selector-label {
+			position: relative;
+			display: inline-block;
+			vertical-align: middle;
+			padding: 5px 7px;
+			color: rgb(130, 130, 130);
+			border: 2px rgb(150, 150, 150) solid;
 			font-size: 20px;
+			@include transition(all 0.2s ease-out);
+		}
+
+		.writing-selector .selector-label {
+			background: rgb(210, 210, 210);
 		}
 		
 		#start-button {
@@ -104,7 +149,6 @@ $highlightColor: #0059c8;
 			margin-top: 20px;
 			padding: 7px 15px;
 			font-size: 28px;
-			color: rgb(50, 50, 50);
 			color: $highlightColor;
 			border: 2px $highlightColor solid;
 			cursor: pointer;
@@ -125,10 +169,6 @@ $highlightColor: #0059c8;
 	}
 
 	&-container {
-
-		.training-title {
-			color: rgb(90, 90, 90);
-		}
 
 		.training-progress-container {
 			position: relative;
@@ -182,6 +222,11 @@ $highlightColor: #0059c8;
 			font-size: 18px;
 			border: none;
 			cursor: pointer;
+			@include transition(all 0.2s ease-out);
+
+			body.hover-enable &:hover {
+				color: rgba(100, 100, 100, 0.6);
+			}
 		}
 
 		.kana-display {
@@ -234,22 +279,6 @@ $highlightColor: #0059c8;
 				color: white;
 			}
 		}
-
-		.menu-button-container {
-			margin-top: 0.6em;
-		}
-
-		.menu-button {
-			padding: 5px 10px;
-			font-size: 18px;
-			color: rgb(100, 100, 100);
-			cursor: pointer;
-			@include transition(all 0.2s ease-out);
-
-			body.hover-enable &:hover {
-				color: $highlightColor;
-			}
-		}
 	}
 }
 
@@ -257,9 +286,58 @@ $highlightColor: #0059c8;
 
 	&-container {
 
-		.wrong-answers-container > div {
+		.result-container {
+			margin-top: 2em;
+		}
+
+		.result-text {
+			font-size: 24px;
+			color: rgb(50, 50, 50);
+		}
+
+		.result-percentage {
+			font-size: 160px;
+			color: $highlightColor;
+		}
+
+		.result-score {
+			font-size: 24px;
+			color: $highlightColor;
+		}
+
+		.wrong-answers-container {
+			margin-top: 2em;
+		}
+
+		.correction-container {
 			display: inline-block;
 			margin: 0 5px;
 		}	
+
+		.wrong-answers-title {
+			font-size: 20px;
+			color: rgb(50, 50, 50);
+		}
+
+		.wrong-answers-list {
+			margin-top: 1em;
+			color: $highlightColor;
+		}
+
+		.correction-container {
+			padding: 5px 5px;
+			margin-bottom: 0.5em;
+			border: 1px rgb(200, 200, 200) solid;
+		}
+
+		.correct-character {
+			font-size: 24px;
+			padding-bottom: 2px;
+			border-bottom: 1px rgb(200, 200, 200) solid;
+		}
+		
+		.correct-reading {
+			font-size: 20px;
+		}
 	}
 }

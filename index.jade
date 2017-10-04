@@ -55,15 +55,19 @@ html
 							div.submit-button-container
 								input(type="submit" value="Submit" name="submit").submit-button#reading-answer-submit
 						div.menu-button-container
-							span.menu-button Menu
+							span.menu-button Return to menu
 
 				div.reading-result-wrapper.screen-wrapper#reading-result
 					div.reading-result-container.screen-container
 						div.screen-title Reading Training: Result
-						div.result-text Your score was:
-						div.result-percentage#result-percentage
-						div.result-score#result-score
+						div.result-container
+							div.result-text Your score is:
+							div.result-percentage#result-percentage
+							div.result-score#result-score
 						div.wrong-answers-container#wrong-answers-container
-						button.menu-button Menu
+							div.wrong-answers-title#wrong-answers-title
+							div.wrong-answers-list#wrong-answers-list
+						div.menu-button-container
+							span.menu-button Return to menu
 
 		script(src="./script.js")

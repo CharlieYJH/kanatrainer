@@ -46,6 +46,8 @@
 		var resultScore = document.getElementById("result-score");
 		var resultPercentage = document.getElementById("result-percentage");
 		var wrongAnswersContainer = document.getElementById("wrong-answers-container");
+		var wrongAnswersTitle = document.getElementById("wrong-answers-title");
+		var wrongAnswersList = document.getElementById("wrong-answers-list");
 
 		// Defining the character set
 		var characters = [
@@ -123,11 +125,12 @@
 					readingKanaDisplay.innerHTML = "";
 					readingProgressBar.style.width = 0;
 
-					var child = wrongAnswersContainer.firstChild;
+					var child = wrongAnswersList.firstChild;
 
 					// Remove all the wrong answers displayed
 					while(child) {
-						wrongAnswersContainer.removeChild(child);
+						wrongAnswersList.removeChild(child);
+						child = wrongAnswersList.firstChild;
 					}
 
 					// Reset user actions
@@ -274,11 +277,15 @@
 
 					// Result from training
 					resultPercentage.innerHTML = correctChars / totalChars * 100 + "%";
-					resultScore.innerHTML = correctChars + " / " + totalChars;
+					resultScore.innerHTML = correctChars + " out of " + totalChars;
+
+					// Set container title
+					wrongAnswersTitle.innerHTML = (wrongChars.length > 0) ? "Things to work on:" : "Perfect score, well done!";
 
 					// If user had wrong answers, show all the questions answered wrong
 					for (var i = 0; i < wrongChars.length; i++) {
 						var container = document.createElement("div");
+						container.classList.add("correction-container")
 
 						// Show the character
 						var questionDiv = document.createElement("div");
@@ -295,7 +302,7 @@
 						container.appendChild(questionDiv);
 						container.appendChild(answerDiv);
 
-						wrongAnswersContainer.appendChild(container);
+						wrongAnswersList.appendChild(container);
 					}
 
 					// Reset wrong characters
