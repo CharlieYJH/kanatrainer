@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./style.css">
   </head>
-  <body>
+  <body class="hover-enable">
     <div class="main-wrapper">
       <div class="app-wrapper">
         <div id="start-screen" class="start-screen-wrapper screen-wrapper">
           <div class="start-screen-container screen-container">
             <div class="title">Kana Trainer</div>
             <div id="kana-selector" class="selector-container">
-              <div class="selector-title">Kana Selector</div>
+              <div class="selector-title-container">
+                <div class="selector-title">Kana Selector</div>
+              </div>
               <form>
                 <div class="selector-field hiragana-selector">
                   <input id="hiragana" type="checkbox" value="hiragana" name="hiragana" class="selector">
@@ -26,7 +28,9 @@
               </form>
             </div>
             <div id="type-selector" class="selector-container">
-              <div class="selector-title">Training Type</div>
+              <div class="selector-title-container">
+                <div class="selector-title">Training Type</div>
+              </div>
               <form>
                 <div class="selector-field reading-selector">
                   <input id="reading" type="checkbox" value="reading" name="reading" class="selector">
@@ -45,15 +49,22 @@
           <div class="reading-training-container screen-container">
             <div class="training-title screen-title">Reading Training</div>
             <div class="training-progress-container">
+              <div class="training-full-progress"></div>
               <div id="reading-progress-bar" class="training-progress-bar"></div>
               <div id="reading-training-progress" class="training-progress"></div>
             </div>
+            <div class="skip-button-container"><span id="reading-skip" class="skip-button">Skip</span></div>
             <div id="reading-kana-display" class="kana-display"></div>
             <div id="reading-kana-answer" class="kana-answer">Incorrect</div>
-            <input type="text" name="answer" id="reading-answer-input">
-            <input type="submit" value="Submit" name="submit" id="reading-answer-submit">
-            <button id="reading-skip" class="skip-button">Skip</button>
-            <button class="menu-button">Menu</button>
+            <div class="submission-container">
+              <div class="answer-input-container">
+                <input type="text" name="answer" id="reading-answer-input" class="answer-input">
+              </div>
+              <div class="submit-button-container">
+                <input type="submit" value="Submit" name="submit" id="reading-answer-submit" class="submit-button">
+              </div>
+            </div>
+            <div class="menu-button-container"><span class="menu-button">Menu</span></div>
           </div>
         </div>
         <div id="reading-result" class="reading-result-wrapper screen-wrapper">

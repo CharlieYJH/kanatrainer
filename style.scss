@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700');
+
 @mixin transform($transform) {
 	-webkit-transform: $transform;
 	   -moz-transform: $transform;
@@ -16,6 +18,14 @@ body, html {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	font-family: Roboto, Arial, sans-serif;
+	font-weight: 300;
+}
+
+button, input {
+	font-family: inherit;
+	-webkit-appearance: none; // Gets rid of box shadow on iOS
+	outline: none; // Gets rid of Chrome focus border
 }
 
 .main-wrapper {
@@ -27,7 +37,7 @@ body, html {
 	position: relative;
 	width: 80%;
 	margin: 0 auto;
-	padding-top: 15vh;
+	padding-top: 10vh;
 }
 
 $screenTransitionTime: 0.2s;
@@ -52,8 +62,10 @@ $screenTransitionTime: 0.2s;
 }
 
 .screen-title {
-	font-size: 28px;
+	font-size: 36px;
 }
+
+$highlightColor: #0059c8;
 
 .start-screen {
 
@@ -61,7 +73,9 @@ $screenTransitionTime: 0.2s;
 
 		.title {
 			margin-bottom: 50px;
-			font-size: 36px;
+			font-size: 48px;
+			font-weight: 200;
+			color: rgb(90, 90, 90);
 		}
 
 		.selector-container {
@@ -69,8 +83,12 @@ $screenTransitionTime: 0.2s;
 		}
 
 		.selector-title {
+			display: inline-block;
 			margin-bottom: 15px;
-			font-size: 24px;
+			padding-bottom: 7px;
+			font-size: 28px;
+			color: rgb(50, 50, 50);
+			border-bottom: 2px rgb(50, 50, 50) solid;
 		}
 
 		.selector-field {
@@ -78,15 +96,24 @@ $screenTransitionTime: 0.2s;
 		}
 
 		.selector-label {
-			font-size: 18px;
+			font-size: 20px;
 		}
 		
 		#start-button {
 			display: inline-block;
 			margin-top: 20px;
-			padding: 10px 20px;
-			font-size: 24px;
+			padding: 7px 15px;
+			font-size: 28px;
+			color: rgb(50, 50, 50);
+			color: $highlightColor;
+			border: 2px $highlightColor solid;
 			cursor: pointer;
+			@include transition(all 0.2s ease-out);
+
+			body.hover-enable &:hover {
+				background: $highlightColor;
+				color: white;
+			}
 		}
 	}
 }
@@ -99,9 +126,16 @@ $screenTransitionTime: 0.2s;
 
 	&-container {
 
+		.training-title {
+			color: rgb(90, 90, 90);
+		}
+
 		.training-progress-container {
+			position: relative;
 			width: 40%;
 			margin: 0 auto;
+			margin-top: 30px;
+			background: transparent;
 
 			@media only screen and (max-width: 480px) {
 				width: 100%;
@@ -109,23 +143,111 @@ $screenTransitionTime: 0.2s;
 		}
 
 		.training-progress-bar {
+			position: absolute;
+			top: 0;
+			left: 0;
 			width: 0%;
 			height: 5px;
-			margin-top: 30px;
-			margin-bottom: 20px;
-			background: black;
+			background: #0059c8;
+			border-radius: 20px;
 			@include transition(all 0.2s ease-out);
+		}
+
+		.training-full-progress {
+			top: 0;
+			left: 0;
+			z-index: -100;
+			width: 100%;
+			height: 5px;
+			margin-bottom: 10px;
+			background: #c5d0de;
+			border-radius: 20px;
+		}
+
+		.training-progress {
+			font-size: 20px;
+			color: rgb(50, 50, 50);
+			color: $highlightColor;
+		}
+
+		.skip-button-container {
+			margin-top: 10px;
+			margin-bottom: 20px;
+		}
+
+		.skip-button {
+			padding: 10px 10px;
+			background: transparent;
+			color: rgb(100, 100, 100);
+			font-size: 18px;
+			border: none;
+			cursor: pointer;
 		}
 
 		.kana-display {
 			font-size: 160px;
+			color: rgb(50, 50, 50);
 		}
 
 		.kana-answer {
 			opacity: 0;
+			margin-bottom: 5px;
+			color: #de2626;
+			@include transition(all 0.2s ease-out);
 
 			&.show-wrong {
 				opacity: 1;
+			}
+		}
+
+		.submission-container {
+			margin-bottom: 20px;
+		}
+
+		.answer-input {
+			background: transparent;
+			font-size: 18px;
+			color: $highlightColor;
+			text-align: center;
+			border: none;
+			border-radius: 0;
+			border-bottom: 2px $highlightColor solid;
+		}
+
+		.submit-button-container {
+			margin-top: 20px;
+		}
+
+		.submit-button {
+			background: transparent;
+			font-size: 20px;
+			padding: 5px 10px;
+			color: $highlightColor;
+			border: none;
+			border-radius: 0;
+			border: 2px $highlightColor solid;
+			cursor: pointer;
+			@include transition(all 0.2s ease-out);
+
+			body.hover-enable &:hover {
+				background: $highlightColor;
+				color: white;
+			}
+		}
+
+		.menu-button-container {
+			margin-top: 10px;
+		}
+
+		.menu-button {
+			padding: 5px 10px;
+			font-size: 18px;
+			color: rgb(100, 100, 100);
+			cursor: pointer;
+			@include transition(all 0.2s ease-out);
+
+			body.hover-enable &:hover {
+				color: $highlightColor;
 			}
 		}
 	}
