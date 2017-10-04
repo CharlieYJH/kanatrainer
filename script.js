@@ -386,6 +386,7 @@
 							currCharSet.push.apply(currCharSet, hiraganaCombination);
 							currCharSet.push.apply(currCharSet, katakanaCombination);
 						}
+
 					} else if (selectors.hiragana.checked) {
 						currCharSet.push.apply(currCharSet, hiragana);
 						
@@ -393,13 +394,19 @@
 						if (selectors.combinations.checked) {
 							currCharSet.push.apply(currCharSet, hiraganaCombination);
 						}
-					} else {
+
+					} else if (selectors.katakana.checked) {
 						currCharSet.push.apply(currCharSet, katakana);
 
 						// Include the combination characters if user selected
 						if (selectors.combinations.checked) {
 							currCharSet.push.apply(currCharSet, katakanaCombination);
 						}
+
+					} else {
+
+						// Only include combination characters
+						currCharSet = hiraganaCombination.concat(katakanaCombination);
 					}
 
 					if (selectors.reading.checked) {
