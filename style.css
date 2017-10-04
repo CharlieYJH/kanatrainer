@@ -47,11 +47,11 @@ button, input {
   color: #5a5a5a; }
 
 .menu-button-container {
-  margin-top: 0.6em; }
+  margin-top: 0.6em;
+  margin-bottom: 1em; }
 
 .menu-button {
   padding: 5px 10px;
-  margin-bottom: 1em;
   font-size: 18px;
   color: #0059c8;
   cursor: pointer;

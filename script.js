@@ -23,6 +23,7 @@
 		var selectors = {
 			hiragana: document.getElementById("hiragana"),
 			katakana: document.getElementById("katakana"),
+			combinations: document.getElementById("combinations"),
 			writing: document.getElementById("writing"),
 			reading: document.getElementById("reading")
 		};
@@ -131,7 +132,43 @@
 			{romaji: ["pu"], character: "ぷ"},
 			{romaji: ["pe"], character: "ぺ"},
 			{romaji: ["po"], character: "ぽ"}
-		]
+		];
+
+		var hiraganaCombination = [
+			{romaji: ["kya"], character: "きゃ"},
+			{romaji: ["kyu"], character: "きゅ"},
+			{romaji: ["kyo"], character: "きょ"},
+			{romaji: ["sha", "sya"], character: "しゃ"},
+			{romaji: ["shu", "syu"], character: "しゅ"},
+			{romaji: ["sho", "syo"], character: "しょ"},
+			{romaji: ["cha"], character: "ちゃ"},
+			{romaji: ["chu"], character: "ちゅ"},
+			{romaji: ["cho"], character: "ちょ"},
+			{romaji: ["nya"], character: "にゃ"},
+			{romaji: ["nyu"], character: "にゅ"},
+			{romaji: ["nyo"], character: "にょ"},
+			{romaji: ["hya"], character: "ひゃ"},
+			{romaji: ["hyu"], character: "ひゅ"},
+			{romaji: ["hyo"], character: "ひょ"},
+			{romaji: ["mya"], character: "みゃ"},
+			{romaji: ["myu"], character: "みゅ"},
+			{romaji: ["myo"], character: "みょ"},
+			{romaji: ["rya"], character: "りゃ"},
+			{romaji: ["ryu"], character: "りゅ"},
+			{romaji: ["ryo"], character: "りょ"},
+			{romaji: ["gya"], character: "ぎゃ"},
+			{romaji: ["gyu"], character: "ぎゅ"},
+			{romaji: ["gyo"], character: "ぎょ"},
+			{romaji: ["ja", "jya"], character: "じゃ"},
+			{romaji: ["ju", "jyu"], character: "じゅ"},
+			{romaji: ["jo", "jyo"], character: "じょ"},
+			{romaji: ["bya"], character: "びゃ"},
+			{romaji: ["byu"], character: "びゅ"},
+			{romaji: ["byo"], character: "びょ"},
+			{romaji: ["pya"], character: "ぴゃ"},
+			{romaji: ["pyu"], character: "ぴゅ"},
+			{romaji: ["pyo"], character: "ぴょ"}
+		];
 
 		// Katakana character set
 		var katakana = [
@@ -206,7 +243,66 @@
 			{romaji: ["pu"], character: "プ"},
 			{romaji: ["pe"], character: "ペ"},
 			{romaji: ["po"], character: "ポ"}
-		]
+		];
+
+		var katakanaCombination = [
+			{romaji: ["kya"], character: "キャ"},
+			{romaji: ["kyu"], character: "キュ"},
+			{romaji: ["kyo"], character: "キョ"},
+			{romaji: ["sha", "sya"], character: "シャ"},
+			{romaji: ["shu", "syu"], character: "シュ"},
+			{romaji: ["sho", "syo"], character: "ショ"},
+			{romaji: ["cha"], character: "チャ"},
+			{romaji: ["chu"], character: "チュ"},
+			{romaji: ["cho"], character: "チョ"},
+			{romaji: ["nya"], character: "ニャ"},
+			{romaji: ["nyu"], character: "ニュ"},
+			{romaji: ["nyo"], character: "ニョ"},
+			{romaji: ["hya"], character: "ヒャ"},
+			{romaji: ["hyu"], character: "ヒュ"},
+			{romaji: ["hyo"], character: "ヒョ"},
+			{romaji: ["mya"], character: "ミャ"},
+			{romaji: ["myu"], character: "ミュ"},
+			{romaji: ["myo"], character: "ミョ"},
+			{romaji: ["rya"], character: "リャ"},
+			{romaji: ["ryu"], character: "リュ"},
+			{romaji: ["ryo"], character: "リョ"},
+			{romaji: ["gya"], character: "ギャ"},
+			{romaji: ["gyu"], character: "ギュ"},
+			{romaji: ["gyo"], character: "ギョ"},
+			{romaji: ["ja", "jya"], character: "ジャ"},
+			{romaji: ["ju", "jyu"], character: "ジュ"},
+			{romaji: ["jo", "jyo"], character: "ジョ"},
+			{romaji: ["bya"], character: "ビャ"},
+			{romaji: ["byu"], character: "ビュ"},
+			{romaji: ["byo"], character: "ビョ"},
+			{romaji: ["pya"], character: "ピャ"},
+			{romaji: ["pyu"], character: "ピュ"},
+			{romaji: ["pyo"], character: "ピョ"},
+			{romaji: ["fa"], character: "ファ"},
+			{romaji: ["fi"], character: "フィ"},
+			{romaji: ["fe"], character: "フェ"},
+			{romaji: ["fo"], character: "フォ"},
+			{romaji: ["fyu"], character: "フュ"},
+			{romaji: ["wi"], character: "ウィ"},
+			{romaji: ["we"], character: "ウェ"},
+			{romaji: ["wo"], character: "ウォ"},
+			{romaji: ["va"], character: "ヴァ"},
+			{romaji: ["vi"], character: "ヴィ"},
+			{romaji: ["ve"], character: "ヴェ"},
+			{romaji: ["vo"], character: "ヴォ"},
+			{romaji: ["tsa"], character: "ヴァ"},
+			{romaji: ["tsi"], character: "ヴィ"},
+			{romaji: ["tse"], character: "ヴェ"},
+			{romaji: ["tso"], character: "ヴォ"},
+			{romaji: ["che"], character: "チェ"},
+			{romaji: ["she"], character: "シェ"},
+			{romaji: ["je"], character: "ジェ"},
+			{romaji: ["ti"], character: "ティ"},
+			{romaji: ["di"], character: "ディ"},
+			{romaji: ["du"], character: "デュ"},
+			{romaji: ["tu"], character: "トゥ"}
+		];
 
 		// Current character set chosen depending on user setting
 		var currCharSet = [];
@@ -284,10 +380,26 @@
 					// Select the appropriate character set depending on user setting
 					if (selectors.hiragana.checked && selectors.katakana.checked) {
 						currCharSet = hiragana.concat(katakana);
+
+						// Include the combination characters if user selected
+						if (selectors.combinations.checked) {
+							currCharSet.push.apply(currCharSet, hiraganaCombination);
+							currCharSet.push.apply(currCharSet, katakanaCombination);
+						}
 					} else if (selectors.hiragana.checked) {
 						currCharSet.push.apply(currCharSet, hiragana);
+						
+						// Include the combination characters if user selected
+						if (selectors.combinations.checked) {
+							currCharSet.push.apply(currCharSet, hiraganaCombination);
+						}
 					} else {
 						currCharSet.push.apply(currCharSet, katakana);
+
+						// Include the combination characters if user selected
+						if (selectors.combinations.checked) {
+							currCharSet.push.apply(currCharSet, katakanaCombination);
+						}
 					}
 
 					if (selectors.reading.checked) {
