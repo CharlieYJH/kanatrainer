@@ -480,8 +480,6 @@
 							if (wrongChars.length <= 0 || wrongChars[wrongChars.length - 1] !== currChar) {
 								wrongChars.push(currChar);
 							}
-
-							console.log(wrongChars);
 						}
 
 						// Reset current answer and input box
