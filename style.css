@@ -98,8 +98,6 @@ button, input {
   -moz-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out; }
-.start-screen-container .writing-selector .selector-label {
-  background: #d2d2d2; }
 .start-screen-container #start-button {
   display: inline-block;
   margin-top: 20px;

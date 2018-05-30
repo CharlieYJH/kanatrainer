@@ -150,10 +150,6 @@ $highlightColor: #0059c8;
 			font-size: 20px;
 			@include transition(all 0.2s ease-out);
 		}
-
-		.writing-selector .selector-label {
-			background: rgb(210, 210, 210);
-		}
 		
 		#start-button {
 			display: inline-block;
