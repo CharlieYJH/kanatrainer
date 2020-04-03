@@ -389,7 +389,7 @@
 
 					} else if (selectors.hiragana.checked) {
 						currCharSet.push.apply(currCharSet, hiragana);
-						
+
 						// Include the combination characters if user selected
 						if (selectors.combinations.checked) {
 							currCharSet.push.apply(currCharSet, hiraganaCombination);
@@ -459,7 +459,7 @@
 
 					// If user submitted an answer, check for correctness
 					if (currAnswer) {
-						if (currChar.romaji.includes(currAnswer)) {
+						if (currChar.romaji.includes(currAnswer.toLowerCase())) {
 
 							// If this was the first attempt, add 1 to score
 							if (!attempted) {
@@ -521,7 +521,7 @@
 					}
 
 					break;
-				
+
 				// Show training results
 				case states.readingResult:
 
@@ -597,7 +597,7 @@
 						kanaSelected = true;
 						break;
 					}
-				}	
+
 
 				for (var i = 0; i < typeSelectors.length; i++) {
 					if (typeSelectors[i].checked) {
