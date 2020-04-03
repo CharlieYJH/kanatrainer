@@ -597,6 +597,7 @@
 						kanaSelected = true;
 						break;
 					}
+				}
 
 
 				for (var i = 0; i < typeSelectors.length; i++) {
